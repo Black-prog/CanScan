@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CanScan - Historias Clínicas</title>
+    <link rel="stylesheet" href="static/histories.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="static/logo.png" alt="CanScan Logo">
+            </div>
+            <h1>CanScan</h1>
+            <nav>
+                <a href="profile" class="active">Mi perfil</a>
+            </nav>
+            <div class="user-icon">
+                <img src="static/user_icon.png" alt="User Icon">
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Historias Médicas</h2>
+        <p>Historias de los pacientes</p>
+
+        <div class="histories-grid">
+            {% for history in histories %}
+            <div class="history-card">
+                <h3>{{ history.patient_name }}</h3>
+                <span class="date">Fecha {{ history.date }}</span>
+                <img src="{{ history.image_path }}" alt="{{ history.condition }}">
+                <p class="condition">{{ history.condition }}</p>
+                <button class="view-button">Ver</button>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="all-histories-btn">
+            <a href="{{ url_for('all_histories') }}" class="btn-view-all">Ver todas las historias</a>
+        </div>
+    </div>
+</body>
+</html>

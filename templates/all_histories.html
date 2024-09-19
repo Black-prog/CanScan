@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historias Médicas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='all_histories.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="CanScan Logo">
+        </div>
+        <div class="title">CanScan</div>
+        <div class="profile-icon">
+            <a href="/profile"><img src="{{ url_for('static', filename='user_icon.png') }}" alt="Perfil"></a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Todas las Historias Médicas</h2>
+
+        <!-- Formulario de búsqueda -->
+        <form action="{{ url_for('all_histories') }}" method="GET" class="search-form">
+            <input type="text" name="search_query" placeholder="Buscar por nombre" value="{{ request.args.get('search_query', '') }}">
+            <button type="submit">Buscar</button>
+        </form>
+
+        <!-- Mostrar las historias filtradas -->
+        {% for history in histories %}
+        <div class="history-card">
+            <h3>{{ history.patient_name }}</h3>
+            <p>Fecha: {{ history.date }}</p>
+            <img src="{{ url_for('static', filename=history.image_path) }}" alt="Imagen del análisis">
+            <p>{{ history.condition }}</p>
+            <!-- Botón para descargar el análisis en PDF -->
+            <form action="/download-pdf/{{ history.id }}" method="GET">
+                <button type="submit">Descargar Resultado</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <link rel="stylesheet" href="static/edit-profile.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="static/logo.png" alt="CanScan Logo">
+            </div>
+            <h1>CanScan</h1>
+            <div class="user-actions">
+                <form action="/delete-account" method="POST" style="display: inline;">
+                    <button type="submit" class="delete-button">Eliminar Cuenta</button>
+                </form>
+            </div>
+            <div class="user">
+                <a href="/profile">
+                    <img src="static/user_icon.png" alt="User Icon">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Editar Perfil</h2>
+        <form action="/update-profile" method="POST">
+            <div class="input-group">
+                <label for="username">Nombre de Usuario</label>
+                <input type="text" id="username" name="username" value="{{ user.username }}" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" name="email" value="{{ user.email }}" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Nueva Contraseña</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <input type="submit" value="Actualizar">
+        </form>
+    </div>
+</body>
+</html>

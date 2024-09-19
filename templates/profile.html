@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CanScan - Perfil de Usuario</title>
+    <link rel="stylesheet" href="static/profile.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="static/logo.png" alt="CanScan Logo">
+            </div>
+            <h1>CanScan</h1>
+            <div class="user-actions">
+                <a href="/logout" class="logout-button">Cerrar Sesión</a>
+            </div>
+            <div class="user-icon">
+                <img src="static/user_icon.png" alt="User Icon">
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="profile-header">
+            <img src="{{ url_for('static', filename=user.profile_pic if user.profile_pic else 'static/Default_user.png') }}" 
+                class="profile-image">
+            <div class="profile-info">
+                <div class="profile-info">
+                    <h2>{{ user.username }} 
+                        <a href="/edit-profile">
+                            <img src="static/pencil_icon.png" alt="Editar" class="edit-icon">
+                        </a>
+                    </h2>
+                    <p>{{ user.email }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-content">
+            <a href="{{ url_for('all_histories') }}" class="btn-link">Historias Clínicas</a>
+            <form action="{{ url_for('start_analysis') }}" method="POST">
+                <button type="submit" class="action-button">Análisis nuevo</button>
+            </form>
+        </div>
+        <div class="profile-content"></div>
+            <h3>Cambiar Foto de Perfil</h3>
+            <form action="/update-profile-pic" method="POST" enctype="multipart/form-data">
+                <label for="file">Subir nueva imagen:</label>
+                <input type="file" id="file" name="file" accept="image/*">
+                <button type="submit" class="action-button">Subir Foto</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

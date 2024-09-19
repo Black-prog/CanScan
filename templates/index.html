@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CanScan - Detección de Cáncer de Piel</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="static/logo.png" alt="CanScan Logo">
+            </div>
+            <h1>CanScan</h1>
+            <div class="user">
+                <a href="/profile">
+                    <img src="static/user_icon.png" alt="User Icon">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>REALICE UN NUEVO ANÁLISIS</h2>
+        <!-- Cambiado para enviar los nombres correctamente a /analyze -->
+        <form action="/analyze" method="POST" enctype="multipart/form-data">
+            <div class="input-group">
+                <label for="doctor_name">NOMBRE DEL DOCTOR</label>
+                <input type="text" id="doctor_name" name="doctor_name" value="{{ user.username }}" readonly>
+            </div>
+            <div class="input-group">
+                <label for="patient_first_name">NOMBRE DEL PACIENTE</label>
+                <input type="text" id="patient_first_name" name="patient_first_name" placeholder="Diego" required>
+            </div>
+            <div class="input-group">
+                <label for="patient_last_name">APELLIDO DEL PACIENTE</label>
+                <input type="text" id="patient_last_name" name="patient_last_name" placeholder="Perez" required>
+            </div>
+            <div class="image-preview">
+                <img id="imagePreview" src="#" alt="Imagen" style="display:none;" />
+            </div>
+            <div class="input-group">
+                <label for="file" class="upload-button">SUBIR IMAGEN</label>
+                <input type="file" id="file" name="file" accept="image/*" onchange="loadFile(event)" required>
+            </div>
+            <!-- Botón de descarga de PDF -->
+            <a href="/download-pdf" class="download-button">Descargar Formato PDF</a><br>
+
+            <input type="submit" value="Analizar Imagen">
+        </form>
+
+        {% if prediction %}
+        <h2>Predicción: {{ prediction }}</h2>
+        <img src="{{ image_path }}" alt="Uploaded Image" style="max-width: 300px;">
+        {% endif %}
+    </div>
+
+    <!-- Aquí es donde agregamos el JavaScript directamente -->
+    <script>
+        var loadFile = function(event) {
+            var image = document.getElementById('imagePreview');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            image.style.display = 'block';
+        };
+    </script>
+</body>
+</html>

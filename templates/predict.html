@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado del Análisis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+            </div>
+            <div class="nav-links">
+                <span class="brand-title">CanScan</span>
+                <a href="{{ url_for('profile') }}">Perfil</a>
+                <a href="{{ url_for('histories') }}">Historias Clínicas</a>
+                <a href="{{ url_for('index') }}">Realizar Otro Análisis</a>
+            </div>
+        </nav>
+    </header>
+    <main class="main-content">
+        <div class="container">
+            <h1>Resultado del Análisis</h1>
+            <div class="result-card">
+                <h2>Condición Predicha: <span>{{ prediction }}</span></h2>
+                <div style="width: 40%; margin-left: auto; margin-right: auto;">
+                    <img src="{{ url_for('static', filename=image_path) }}" alt="Imagen del análisis" style="width: 100%; height: auto;">
+                </div>
+            </div>
+            <div class="action-buttons-container">
+                <div class="action-buttons">
+                    <a href="{{ url_for('histories') }}" class="button">Ver Historias Clínicas</a>
+                    <a href="{{ url_for('index') }}" class="button">Realizar Otro Análisis</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
