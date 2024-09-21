@@ -339,7 +339,7 @@ def analyze():
             print(f"Imagen guardada en {filepath}")
 
             # Preprocesar la imagen
-            img = image.load_img(filepath, target_size=(150, 150))
+            img = image.load_img(filepath, target_size=(299, 299))
             img_array = image.img_to_array(img)
             img_array = np.expand_dims(img_array, axis=0)
             img_array /= 255.0
