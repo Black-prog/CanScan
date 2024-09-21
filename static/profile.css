@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #0056b3;
+    padding: 10px;
+    color: white;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.navbar h1 {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+    padding-left: 60px;
+}
+
+nav a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+nav a:hover, nav a.active {
+    text-decoration: underline;
+}
+
+.user-icon img {
+    height: 30px;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+}
+
+.logout-button {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #0056b3;
+}
+
+.edit-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+    vertical-align: middle;  
+}
+
+.container {
+    width: 60%;
+    margin: 50px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-pic img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    margin-right: 20px;
+}
+
+.profile-info h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.profile-info h3 {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #666;
+}
+
+.profile-info p {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.profile-content {
+    margin-top: 20px;
+}
+
+.profile-content h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.profile-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-content ul li {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.action-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
